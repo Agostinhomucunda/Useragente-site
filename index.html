@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free User-Agent Generator & API - Generate random User-Agent strings online. Includes full list, API access, and SEO tools.">
+<meta name="keywords" content="user agent generator, random user agent, free user agent API, developer tools">
+<title>Ultimate User-Agent Generator & Free API</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
+header { background: #111; }
+.btn { background: #00ff88; color: #000; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
+.btn:hover { background: #00cc66; }
+#ua-output { background: #1f1f1f; padding: 15px; border-radius: 8px; font-family: monospace; }
+.ua-item { background:#1f1f1f; padding:10px; margin:5px 0; border-radius:5px; display:flex; justify-content:space-between; align-items:center;}
+.ua-item button { background:#00ff88; padding:5px 10px; font-size:12px; border-radius:3px; color:#000; }
+</style>
+<!-- ✅ Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5750018416937226" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-green-400">Ultimate User-Agent Generator</h1>
+<div id="google_translate_element"></div>
+</header>
+
+<section class="text-center p-6">
+<h2 class="text-3xl mb-4">Free User-Agent Generator & API</h2>
+<p class="mb-4">Generate random User-Agent strings for developers, automation, and SEO testing. Now with a real API!</p>
+
+<!-- ✅ AdSense Banner -->
+<div class="my-4">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5750018416937226" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- Generator -->
+<div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-lg">
+<button onclick="generateUA(true)" class="btn mb-4">Generate (Local)</button>
+<button onclick="getUAFromAPI()" class="btn mb-4">Generate with API</button>
+<div id="ua-output" class="mb-4">Click a button to get a User-Agent</div>
+<p class="text-sm text-gray-400">API Endpoint: <span class="text-green-400">https://useragentapi.onrender.com/api/random-ua</span></p>
+</div>
+
+<!-- ✅ API Docs Section -->
+<section class="p-6 bg-gray-800 mt-8 rounded-lg max-w-4xl mx-auto">
+<h2 class="text-2xl text-green-400 mb-4">Free API Access</h2>
+<p>Use our API for free to get random User-Agents in your applications:</p>
+<pre class="bg-black p-4 rounded-lg mt-4">GET https://useragentapi.onrender.com/api/random-ua</pre>
+<h3 class="text-xl mt-4 mb-2">Examples:</h3>
+<p><b>JavaScript:</b></p>
+<pre class="bg-black p-3 rounded">fetch('https://useragentapi.onrender.com/api/random-ua')
+  .then(res => res.json())
+  .then(data => console.log(data.user_agent));</pre>
+<p><b>Python:</b></p>
+<pre class="bg-black p-3 rounded">import requests
+res = requests.get('https://useragentapi.onrender.com/api/random-ua')
+print(res.json())</pre>
+<p><b>cURL:</b></p>
+<pre class="bg-black p-3 rounded">curl https://useragentapi.onrender.com/api/random-ua</pre>
+</section>
+
+<!-- ✅ Search Filter -->
+<section class="p-6 text-center">
+<h2 class="text-xl mb-3">Search User-Agent List</h2>
+<input type="text" id="search" placeholder="Search UA..." class="p-2 w-1/2 rounded">
+<div id="ua-list" class="mt-4"></div>
+</section>
+
+<!-- ✅ AdSense Footer -->
+<section class="text-center my-6">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5750018416937226" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</section>
+
+<footer class="text-center p-4 bg-gray-800">
+<p>&copy; 2025 Ultimate UA Generator | Free API | SEO Tools</p>
+</footer>
+
+<!-- Google Translate -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,pt,es,fr,de,it'}, 'google_translate_element');
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- ✅ JS Logic -->
+<script>
+const uaCategories = {
+  desktop: [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15"
+  ],
+  mobile: [
+    "Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile Safari/604.1"
+  ],
+  bot: [
+    "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+  ]
+};
+
+const fullUAList = [...uaCategories.desktop, ...uaCategories.mobile, ...uaCategories.bot];
+let currentCategory = 'desktop';
+
+function setCategory(cat) {
+  currentCategory = cat;
+  generateUA();
+}
+
+function generateUA(copy = false) {
+  const list = uaCategories[currentCategory];
+  const ua = list[Math.floor(Math.random() * list.length)];
+  document.getElementById('ua-output').innerText = ua;
+  if (copy) navigator.clipboard.writeText(ua);
+}
+
+// ✅ Fetch from API
+async function getUAFromAPI() {
+  document.getElementById('ua-output').innerText = "Loading from API...";
+  const res = await fetch("https://useragentapi.onrender.com/api/random-ua");
+  const data = await res.json();
+  document.getElementById('ua-output').innerText = data.user_agent;
+}
+
+function copyUA(text) {
+  navigator.clipboard.writeText(text);
+  alert('Copied!');
+}
+
+// ✅ Render full list
+function renderList() {
+  const container = document.getElementById('ua-list');
+  container.innerHTML = '';
+  fullUAList.forEach(ua => {
+    const div = document.createElement('div');
+    div.className = 'ua-item';
+    div.innerHTML = `<span>${ua}</span> <button onclick="copyUA('${ua}')">Copy</button>`;
+    container.appendChild(div);
+  });
+}
+renderList();
+
+// ✅ Search Filter
+document.getElementById('search').addEventListener('input', function() {
+  const term = this.value.toLowerCase();
+  const container = document.getElementById('ua-list');
+  container.innerHTML = '';
+  fullUAList.filter(ua => ua.toLowerCase().includes(term)).forEach(ua => {
+    const div = document.createElement('div');
+    div.className = 'ua-item';
+    div.innerHTML = `<span>${ua}</span> <button onclick="copyUA('${ua}')">Copy</button>`;
+    container.appendChild(div);
+  });
+});
+</script>
+</body>
+</html>o
